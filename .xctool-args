@@ -1,5 +1,5 @@
 [
-  "-workspace", "Regex.xcworkspace",
+  "-project", "Regex.xcodeproj",
   "-scheme", "Regex",
   "-configuration", "Debug"
 ]

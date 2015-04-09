@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import LlamaKit
 
 
 public extension String
@@ -62,14 +61,14 @@ public struct Regex
     private let nsRegex: NSRegularExpression
 
 
-    public static func create(pattern:String) -> Result<Regex, NSError>
+    public static func create(pattern:String) -> (Regex?, NSError?)
     {
         var err: NSError?
         let regex = Regex(pattern: pattern, error: &err)
 
-        if let err = err            { return failure(err) }
-        else if let regex = regex   { return success(regex) }
-        else                        { return failure(NSError(domain: "com.illumntr.Regex", code: 1, userInfo:[NSLocalizedDescriptionKey: "Unknown error."])) }
+        if let err = err            { return (nil, err) }
+        else if let regex = regex   { return (regex, nil) }
+        else                        { return (nil, NSError(domain: "com.illumntr.Regex", code: 1, userInfo:[NSLocalizedDescriptionKey: "Unknown error."])) }
     }
 
 

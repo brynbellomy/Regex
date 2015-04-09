@@ -12,7 +12,5 @@ Pod::Spec.new do |s|
   s.source_files = 'src/*.swift'
   s.requires_arc = true
 
-  s.dependency 'LlamaKit', '0.6.0'
-
   s.source = { :git => 'https://github.com/brynbellomy/Regex.git', :tag => s.version }
 end

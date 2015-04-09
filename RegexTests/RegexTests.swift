@@ -8,7 +8,6 @@
 
 import Cocoa
 import XCTest
-import LlamaKit
 import Regex
 
 class RegexTests: XCTestCase
