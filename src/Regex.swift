@@ -9,14 +9,21 @@
 import Foundation
 import LlamaKit
 
+
 public extension String
 {
+    /**
+        Searches the receiving `String` with the regex given in `pattern`, returning the match results.
+     */
     public func grep (pattern:String) -> Regex.MatchResult {
-        return self ~= Regex(pattern)
+        return self =~ Regex(pattern)
     }
 
-    public func replace(pattern:String, replacement:String) -> String {
-        return (self ~= Regex(pattern)) |> map‡ (replacement)
+    /**
+        Searches the receiving string with the regex given in `pattern`, replaces the match(es) with `replacement`, and returns the resulting string.
+     */
+    public func replaceRegex(pattern:String, with replacement:String) -> String {
+        return map(self =~ Regex(pattern), replacement)
     }
 }
 
@@ -55,7 +62,7 @@ public struct Regex
     private let nsRegex: NSRegularExpression
 
 
-    public static func create(pattern:String) -> Result<Regex>
+    public static func create(pattern:String) -> Result<Regex, NSError>
     {
         var err: NSError?
         let regex = Regex(pattern: pattern, error: &err)
@@ -192,6 +199,15 @@ public struct RegexMatchResult: SequenceType, BooleanType
      */
     public func generate() -> GeneratorOf<NSTextCheckingResult> {
         var gen = items.generate()
+        return GeneratorOf { gen.next() }
+    }
+
+
+    /**
+        Returns a `Generator` that iterates over the captured matches as `String`s.
+     */
+    public func generateCaptures() -> GeneratorOf<String> {
+        var gen = captures.generate()
         return GeneratorOf { gen.next() }
     }
 }
