@@ -2,9 +2,9 @@ Pod::Spec.new do |s|
   s.name = 'Regex'
   s.version = '0.1.0'
   s.license = 'MIT'
-  s.summary = 'Functional programming experiments and tools (in Swift).'
+  s.summary = 'Regex class (in Swift).  Wraps NSDateFormatter.'
   s.authors = { 'bryn austin bellomy' => 'bryn.bellomy@gmail.com' }
-  s.license = { :type => 'WTFPL', :file => 'LICENSE.md' }
+  s.license = { :type => 'MIT', :file => 'LICENSE.md' }
   s.homepage = 'https://github.com/brynbellomy/Regex'
 
   s.ios.deployment_target = '8.0'
