@@ -1,0 +1,5 @@
+[
+  "-workspace", "Regex.xcworkspace",
+  "-scheme", "Regex",
+  "-configuration", "Debug"
+]
