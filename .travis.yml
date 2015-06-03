@@ -1,7 +1,0 @@
-
-language: objective-c
-osx_image: beta-xcode6.3
-script:
-    - xctool build test
-
-

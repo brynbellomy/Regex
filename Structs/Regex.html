@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Regex Struct Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Struct/Regex" class="dashAnchor"></a>
+    <a title="Regex Struct Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Regex Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/brynbellomy/Regex"><img src="../img/gh.png"/>View on GitHub</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Regex Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        Regex Struct Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+          <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/String.html">String</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:ZF5Regexoi2etFTSSVS_5Regex_VS_16RegexMatchResult">=~(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Functions.html#/s:F5Regex3mapFTVS_16RegexMatchResultSS_SS">map(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+          <a href="../Structs.html">Structs</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/Regex.html">Regex</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RegexMatchResult.html">RegexMatchResult</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>Regex</h1>
+            <p>A <code>Regex</code> represents a compiled regular expression that can be applied to
+<code>String</code> objects to search for (and replace) matched patterns.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:ZFV5Regex5Regex6createFMS0_FSSTGSqS0__GSqCSo7NSError__"></a>
+                    <a name="//apple_ref/swift/Method/create(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:ZFV5Regex5Regex6createFMS0_FSSTGSqS0__GSqCSo7NSError__">create(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Attempts to create a <code>Regex</code> with the provided <code>pattern</code>.  If this fails, a tuple <code>(nil, NSError)</code> is returned.  If it succeeds, a tuple <code>(Regex, nil)</code> is returned.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">static</span> <span class="kd">func</span> <span class="nf">create</span><span class="p">(</span><span class="nv">pattern</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="kt">Regex</span><span class="p">?,</span> <span class="kt">NSError</span><span class="p">?)</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Regex5RegexcFMS0_FSSS0_"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Regex5RegexcFMS0_FSSS0_">init(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a <code>Regex</code> with the provided <code>String</code> as its pattern.  If the pattern is invalid, this
+function calls <code>fatalError()</code>.  Hence, it is recommended that you use <code>Regex.create()</code> for more
+descriptive error messages.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="n">_</span> <span class="nv">p</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>p</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A string containing a regular expression pattern.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Regex5RegexcFMS0_FT7patternSS5errorGVSs33AutoreleasingUnsafeMutablePointerGSqCSo7NSError___GSqS0__"></a>
+                    <a name="//apple_ref/swift/Method/init(pattern:error:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Regex5RegexcFMS0_FT7patternSS5errorGVSs33AutoreleasingUnsafeMutablePointerGSqCSo7NSError___GSqS0__">init(pattern:error:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates a <code>Regex</code> with the provided <code>String</code> as its pattern.  If the pattern is invalid, this
+function initializes an <code>NSError</code> into the provided <code>NSErrorPointer</code>.  <code>Regex.create()</code> is recommended,
+as it wraps this constructor and handles the <code>NSErrorPointer</code> dance for you.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">?</span> <span class="p">(</span><span class="n">pattern</span> <span class="nv">p</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="nv">error</span><span class="p">:</span><span class="kt">NSErrorPointer</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>p</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A string containing a regular expression pattern.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An <code>NSErrorPointer</code> that will contain an <code>NSError</code> if initialization fails.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Regex5Regex5matchFS0_FSSVS_16RegexMatchResult"></a>
+                    <a name="//apple_ref/swift/Method/match(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Regex5Regex5matchFS0_FSSVS_16RegexMatchResult">match(_:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Searches in <code>string</code> for the regular expression pattern represented by the receiver.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">match</span> <span class="p">(</span><span class="nv">string</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">MatchResult</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>string</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The string in which to search for matches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Regex5Regex16replaceMatchesInFS0_FTSS4withSS_T12replacementsSi6stringSS_"></a>
+                    <a name="//apple_ref/swift/Method/replaceMatchesIn(_:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Regex5Regex16replaceMatchesInFS0_FTSS4withSS_T12replacementsSi6stringSS_">replaceMatchesIn(_:with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Searches <code>string</code> for the regular expression pattern represented by the receiver.  Any matches are replaced using
+the provided <code>replacement</code> string, which can contain substitution patterns like <code>&quot;$1&quot;</code>, etc.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replaceMatchesIn</span> <span class="p">(</span><span class="nv">string</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="n">with</span> <span class="nv">replacement</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nv">replacements</span><span class="p">:</span><span class="kt">Int</span><span class="p">,</span> <span class="nv">string</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>string</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The string to search.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>replacement</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The replacement pattern to apply to any matches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A 2-tuple containing the number of replacements made and the transformed search string.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:FV5Regex5Regex16replaceMatchesInFS0_FTSS4withSS_SS"></a>
+                    <a name="//apple_ref/swift/Method/replaceMatchesIn(_:with:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:FV5Regex5Regex16replaceMatchesInFS0_FTSS4withSS_SS">replaceMatchesIn(_:with:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Searches <code>string</code> for the regular expression pattern represented by the receiver.  Any matches are replaced using
+the provided <code>replacement</code> string, which can contain substitution patterns like <code>&quot;$1&quot;</code>, etc.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="Swift">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">replaceMatchesIn</span> <span class="p">(</span><span class="nv">string</span><span class="p">:</span><span class="kt">String</span><span class="p">,</span> <span class="n">with</span> <span class="nv">replacement</span><span class="p">:</span><span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>string</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The string to search.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>replacement</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The replacement pattern to apply to any matches.</p>
+
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The transformed search string.</p>
+
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2015 <a class="link" href="https://github.com/brynbellomy" target="_blank" rel="external">bryn austin bellomy</a>. All rights reserved. (Last updated: 2015-06-03)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.2.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

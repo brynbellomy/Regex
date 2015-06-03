@@ -1,6 +1,0 @@
-[
-  "-project", "Regex.xcodeproj",
-  "-scheme", "Regex",
-  "-configuration", "Debug",
-  "-reporter", "pretty"
-]
