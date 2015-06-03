@@ -1,6 +1,12 @@
 
 # Regex.swift
 
+[![Build Status](https://travis-ci.org/brynbellomy/Regex.svg?branch=master)](https://travis-ci.org/brynbellomy/Regex)
+[![CocoaPods](https://img.shields.io/cocoapods/v/Regex.svg?style=flat)](http://cocoadocs.org/docsets/Regex)
+[![CocoaPods](https://img.shields.io/cocoapods/p/Regex.svg?style=flat)](http://cocoadocs.org/docsets/Regex)
+[![CocoaPods](https://img.shields.io/cocoapods/l/Regex.svg?style=flat)](http://cocoadocs.org/docsets/Regex)
+[![GitHub tag](https://img.shields.io/github/tag/brynbellomy/Regex.svg?style=flat)]()
+
 # install
 
 Use [CocoaPods](https://cocoapods.org/).
