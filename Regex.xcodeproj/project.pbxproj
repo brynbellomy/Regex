@@ -7,13 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B246B5BB43304AC10FE0724 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC2752B14E1AFE65378E7BF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C505E4431A7EDE9100983C87 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C505E4421A7EDE9100983C87 /* Regex.swift */; };
 		C57C1CD51A5B98370026462A /* Regex.h in Headers */ = {isa = PBXBuildFile; fileRef = C57C1CD41A5B98370026462A /* Regex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C57C1CDB1A5B98370026462A /* Regex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C57C1CCF1A5B98370026462A /* Regex.framework */; };
 		C57C1CE21A5B98370026462A /* RegexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57C1CE11A5B98370026462A /* RegexTests.swift */; };
-		CBD9BD6909B3486EC58D9B64 /* Pods_RegexTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93DED9F4F2F3E5014E2C58B3 /* Pods_RegexTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		D59CF73A0D24C747C79B5D20 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC2752B14E1AFE65378E7BF /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +40,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D59CF73A0D24C747C79B5D20 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,8 +48,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C57C1CDB1A5B98370026462A /* Regex.framework in Frameworks */,
-				7B246B5BB43304AC10FE0724 /* Pods.framework in Frameworks */,
-				CBD9BD6909B3486EC58D9B64 /* Pods_RegexTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
