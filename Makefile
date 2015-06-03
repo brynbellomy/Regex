@@ -1,6 +1,6 @@
 
 PRODUCT_NAME=Regex
-XCTOOL=/usr/local/bin/xctool -scheme $(PRODUCT_NAME) -workspace $(PRODUCT_NAME).xcworkspace -reporter pretty
+XCTOOL=/usr/local/bin/xctool
 
 DOCS_OUTPUT_DIR=~/projects/_swift/_docs/$(PRODUCT_NAME)
 GITHUB_URL=https://github.com/brynbellomy/$(PRODUCT_NAME)
