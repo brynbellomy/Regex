@@ -87,7 +87,7 @@ func map (regexResult:Regex.MatchResult, replacementTemplate:String) -> String
 
 You can use it like so:
 
-```
+```swift
 let stageName = map("Winnie the Pooh" =~ Regex("([a-zA-Z]+)\\s+(the)(.*)"), "$2 $1")
 // stageName == "the Winnie"
 ```

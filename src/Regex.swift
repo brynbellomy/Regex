@@ -61,6 +61,9 @@ public struct Regex
     private let nsRegex: NSRegularExpression
 
 
+    /**
+        Attempts to create a `Regex` with the provided `pattern`.  If this fails, a tuple `(nil, NSError)` is returned.  If it succeeds, a tuple `(Regex, nil)` is returned.
+     */
     public static func create(pattern:String) -> (Regex?, NSError?)
     {
         var err: NSError?
@@ -72,6 +75,13 @@ public struct Regex
     }
 
 
+    /**
+        Creates a `Regex` with the provided `String` as its pattern.  If the pattern is invalid, this
+        function calls `fatalError()`.  Hence, it is recommended that you use `Regex.create()` for more
+        descriptive error messages.
+
+        :param: p A string containing a regular expression pattern.
+     */
     public init(_ p:String)
     {
         pattern = p
@@ -85,6 +95,14 @@ public struct Regex
     }
 
 
+    /**
+        Creates a `Regex` with the provided `String` as its pattern.  If the pattern is invalid, this
+        function initializes an `NSError` into the provided `NSErrorPointer`.  `Regex.create()` is recommended,
+        as it wraps this constructor and handles the `NSErrorPointer` dance for you.
+
+        :param: p A string containing a regular expression pattern.
+        :param: error An `NSErrorPointer` that will contain an `NSError` if initialization fails.
+     */
     public init? (pattern p:String, error:NSErrorPointer)
     {
         pattern = p
@@ -104,6 +122,11 @@ public struct Regex
     }
 
 
+    /**
+        Searches in `string` for the regular expression pattern represented by the receiver.
+
+        :param: string The string in which to search for matches.
+     */
     public func match (string:String) -> MatchResult
     {
         var matches  = [NSTextCheckingResult]()
@@ -122,6 +145,14 @@ public struct Regex
     }
 
 
+    /**
+        Searches `string` for the regular expression pattern represented by the receiver.  Any matches are replaced using
+        the provided `replacement` string, which can contain substitution patterns like `"$1"`, etc.
+
+        :param: string The string to search.
+        :param: replacement The replacement pattern to apply to any matches.
+        :returns: A 2-tuple containing the number of replacements made and the transformed search string.
+     */
     public func replaceMatchesIn (string:String, with replacement:String) -> (replacements:Int, string:String)
     {
         var mutableString = NSMutableString(string:string)
@@ -131,6 +162,14 @@ public struct Regex
     }
 
 
+    /**
+        Searches `string` for the regular expression pattern represented by the receiver.  Any matches are replaced using
+        the provided `replacement` string, which can contain substitution patterns like `"$1"`, etc.
+
+        :param: string The string to search.
+        :param: replacement The replacement pattern to apply to any matches.
+        :returns: The transformed search string.
+     */
     public func replaceMatchesIn (string:String, with replacement:String) -> String {
         return map((string =~ self), replacement)
     }
@@ -158,6 +197,8 @@ public struct RegexMatchResult: SequenceType, BooleanType
     public let regex: NSRegularExpression
     public let searchString: String
     public let items: [NSTextCheckingResult]
+
+    /** An array of the captures as `String`s.  Ordering is the same as the return value of Javascript's `String.match()` method. */
     public let captures: [String]
 
 
