@@ -1,7 +1,7 @@
 
 # Regex.swift
 
-[![Build Status](https://travis-ci.org/brynbellomy/Regex.svg?branch=master)](https://travis-ci.org/brynbellomy/Regex)
+[![Build Status](https://travis-ci.org/brynbellomy/Regex.svg?branch=0.2.1)](https://travis-ci.org/brynbellomy/Regex)
 [![CocoaPods](https://img.shields.io/cocoapods/v/Regex.svg?style=flat)](http://cocoadocs.org/docsets/Regex)
 [![CocoaPods](https://img.shields.io/cocoapods/p/Regex.svg?style=flat)](http://cocoadocs.org/docsets/Regex)
 [![CocoaPods](https://img.shields.io/cocoapods/l/Regex.svg?style=flat)](http://cocoadocs.org/docsets/Regex)
