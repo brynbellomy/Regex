@@ -1,10 +1,11 @@
 Pod::Spec.new do |s|
   s.name = 'Regex'
-  s.version = '0.2.0'
+  s.version = '0.2.1'
   s.license = { :type => 'MIT', :file => 'LICENSE.md' }
   s.homepage = 'https://github.com/brynbellomy/Regex'
   s.authors = { 'bryn austin bellomy' => 'bryn.bellomy@gmail.com' }
   s.summary = 'Regular expression class (in Swift).  Wraps NSRegularExpression.'
+  s.documentation_url = 'http://brynbellomy.github.io/Regex/index.html'
 
   s.ios.deployment_target = '8.0'
   s.osx.deployment_target = '10.10'
