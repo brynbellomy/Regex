@@ -1,0 +1,7 @@
+
+language: objective-c
+osx_image: xcode63
+script:
+    - xctool build test
+
+
