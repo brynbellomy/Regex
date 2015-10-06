@@ -36,14 +36,16 @@ extension String
     }
 
     func convertRange (range: Range<Int>) -> Range<String.Index> {
-        let start = advance(self.startIndex, range.startIndex)
-        let end   = advance(start, range.endIndex - range.startIndex)
+//        let start = advance(self.startIndex, range.startIndex)
+//        let end   = advance(start, range.endIndex - range.startIndex)
+        let start = self.startIndex.advancedBy(range.startIndex)
+        let end   = start.advancedBy(range.endIndex - range.startIndex)
         return Range(start: start, end: end)
     }
 
     func convertRange (nsrange:NSRange) -> Range<String.Index> {
-        let start = advance(self.startIndex, nsrange.location)
-        let end   = advance(start, nsrange.length)
+        let start = self.startIndex.advancedBy(nsrange.location)
+        let end   = start.advancedBy(nsrange.length)
         return Range(start: start, end: end)
     }
 }
