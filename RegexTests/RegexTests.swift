@@ -38,7 +38,7 @@ class RegexTests: XCTestCase
     }
     
     func testMapFunction() {
-        let replaced = map("Winnie the Pooh" =~ Regex("([a-zA-Z]+)\\s+(the)(.*)"), "$2 $1")
+        let replaced = map("Winnie the Pooh" =~ Regex("([a-zA-Z]+)\\s+(the)(.*)"), replacementTemplate: "$2 $1")
         XCTAssertEqual(replaced, "the Winnie")
     }
 }
