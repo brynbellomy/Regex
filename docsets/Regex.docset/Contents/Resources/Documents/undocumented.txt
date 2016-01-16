@@ -1,0 +1,4 @@
+Regex.swift
+	public let regex: NSRegularExpression
+	public let searchString: String
+	public let items: [NSTextCheckingResult]
