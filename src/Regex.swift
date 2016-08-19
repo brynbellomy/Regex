@@ -66,12 +66,12 @@ public struct Regex
     /**
         Attempts to create a `Regex` with the provided `pattern`.  If this fails, a tuple `(nil, NSError)` is returned.  If it succeeds, a tuple `(Regex, nil)` is returned.
      */
-    public static func create(pattern:String) -> (Regex?, NSError?)
+    public static func create(pattern:String, options: NSRegularExpressionOptions = []) -> (Regex?, NSError?)
     {
         var err: NSError?
         let regex: Regex?
         do {
-            regex = try Regex(pattern: pattern)
+            regex = try Regex(pattern: pattern, options: options)
         } catch let error as NSError {
             err = error
             regex = nil
@@ -90,13 +90,13 @@ public struct Regex
 
         - parameter p: A string containing a regular expression pattern.
      */
-    public init(_ p:String)
+    public init(_ p:String, options: NSRegularExpressionOptions = [])
     {
         pattern = p
 
         let regex: NSRegularExpression?
         do {
-            regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions(rawValue: 0))
+            regex = try NSRegularExpression(pattern: pattern, options: options)
         } catch _ as NSError {
             fatalError("Invalid regex: \(p)")
         }
@@ -117,7 +117,7 @@ public struct Regex
         - parameter p: A string containing a regular expression pattern.
         - parameter error: An `NSErrorPointer` that will contain an `NSError` if initialization fails.
      */
-    public init (pattern p:String) throws
+    public init (pattern p:String, options: NSRegularExpressionOptions = []) throws
     {
         var error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
         pattern = p
@@ -125,7 +125,7 @@ public struct Regex
         var err: NSError?
         let regex: NSRegularExpression?
         do {
-            regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions(rawValue: 0))
+            regex = try NSRegularExpression(pattern: pattern, options: options)
         } catch let error as NSError {
             err = error
             regex = nil
