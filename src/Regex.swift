@@ -14,14 +14,14 @@ public extension String
     /**
         Searches the receiving `String` with the regex given in `pattern`, returning the match results.
      */
-    public func grep (pattern:String) -> Regex.MatchResult {
+    public func grep (_ pattern:String) -> Regex.MatchResult {
         return self =~ Regex(pattern)
     }
 
     /**
         Searches the receiving string with the regex given in `pattern`, replaces the match(es) with `replacement`, and returns the resulting string.
      */
-    public func replaceRegex(pattern:String, with replacement:String) -> String {
+    public func replaceRegex(_ pattern:String, with replacement:String) -> String {
         return map(self =~ Regex(pattern), replacementTemplate: replacement)
     }
 }
@@ -31,20 +31,20 @@ extension String
     var fullRange:   Range<String.Index> { return startIndex ..< endIndex }
     var fullNSRange: NSRange             { return NSRange(location:0, length:self.characters.count) }
 
-    func substringWithRange (range:NSRange) -> String {
-       return substringWithRange(convertRange(range))
+    func substringWithRange (_ range:NSRange) -> String {
+       return substring(with: convertRange(range))
     }
 
-    func convertRange (range: Range<Int>) -> Range<String.Index> {
-        let start = self.startIndex.advancedBy(range.startIndex)
-        let end   = start.advancedBy(range.endIndex - range.startIndex)
-        return Range(start: start, end: end)
+    func convertRange (_ range: Range<Int>) -> Range<String.Index> {
+        let start = self.characters.index(self.startIndex, offsetBy: range.lowerBound)
+        let end   = self.characters.index(start, offsetBy: range.upperBound - range.lowerBound)
+        return (start ..< end)
     }
 
-    func convertRange (nsrange:NSRange) -> Range<String.Index> {
-        let start = self.startIndex.advancedBy(nsrange.location)
-        let end   = start.advancedBy(nsrange.length)
-        return Range(start: start, end: end)
+    func convertRange (_ nsrange:NSRange) -> Range<String.Index> {
+        let start = self.characters.index(self.startIndex, offsetBy: nsrange.location)
+        let end   = self.characters.index(start, offsetBy: nsrange.length)
+        return (start ..< end)
     }
 }
 
@@ -57,14 +57,14 @@ public struct Regex
 {
     public typealias MatchResult = RegexMatchResult
 
-    private let pattern: String
-    private let nsRegex: NSRegularExpression
+    fileprivate let pattern: String
+    fileprivate let nsRegex: NSRegularExpression
 
 
     /**
         Attempts to create a `Regex` with the provided `pattern`.  If this fails, a tuple `(nil, NSError)` is returned.  If it succeeds, a tuple `(Regex, nil)` is returned.
      */
-    public static func create(pattern:String) -> (Regex?, NSError?)
+    public static func create(_ pattern:String) -> (Regex?, NSError?)
     {
         var err: NSError?
         let regex: Regex?
@@ -94,7 +94,7 @@ public struct Regex
 
         let regex: NSRegularExpression?
         do {
-            regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions(rawValue: 0))
+            regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options(rawValue: 0))
         } catch _ as NSError {
             fatalError("Invalid regex: \(p)")
         }
@@ -123,7 +123,7 @@ public struct Regex
         var err: NSError?
         let regex: NSRegularExpression?
         do {
-            regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions(rawValue: 0))
+            regex = try NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options(rawValue: 0))
         } catch let error as NSError {
             err = error
             regex = nil
@@ -146,14 +146,14 @@ public struct Regex
 
         - parameter string: The string in which to search for matches.
      */
-    public func match (string:String) -> MatchResult
+    public func match (_ string:String) -> MatchResult
     {
         var matches  = [NSTextCheckingResult]()
         let all      = NSRange(location: 0, length: string.characters.count)
-        let moptions = NSMatchingOptions(rawValue: 0)
+        let moptions = NSRegularExpression.MatchingOptions(rawValue: 0)
 
-        nsRegex.enumerateMatchesInString(string, options:moptions, range:all) {
-            (result: NSTextCheckingResult?, flags: NSMatchingFlags, ptr: UnsafeMutablePointer<ObjCBool>) in
+        nsRegex.enumerateMatches(in: string, options:moptions, range:all) {
+            (result: NSTextCheckingResult?, flags: NSRegularExpression.MatchingFlags, ptr: UnsafeMutablePointer<ObjCBool>) in
             
             if let result = result {
                 matches.append(result)
@@ -172,10 +172,10 @@ public struct Regex
         - parameter replacement: The replacement pattern to apply to any matches.
         - returns: A 2-tuple containing the number of replacements made and the transformed search string.
      */
-    public func replaceMatchesIn (string:String, with replacement:String) -> (replacements:Int, string:String)
+    public func replaceMatchesIn (_ string:String, with replacement:String) -> (replacements:Int, string:String)
     {
         let mutableString = NSMutableString(string:string)
-        let replacements  = nsRegex.replaceMatchesInString(mutableString, options:NSMatchingOptions(rawValue: 0), range:string.fullNSRange, withTemplate:replacement)
+        let replacements  = nsRegex.replaceMatches(in: mutableString, options:NSRegularExpression.MatchingOptions(rawValue: 0), range:string.fullNSRange, withTemplate:replacement)
 
         return (replacements:replacements, string:String(mutableString))
     }
@@ -189,13 +189,13 @@ public struct Regex
         - parameter replacement: The replacement pattern to apply to any matches.
         - returns: The transformed search string.
      */
-    public func replaceMatchesIn (string:String, with replacement:String) -> String {
+    public func replaceMatchesIn (_ string:String, with replacement:String) -> String {
         return map((string =~ self), replacementTemplate: replacement)
     }
 }
 
 
-infix operator =~ {}
+infix operator =~
 
 /**
     Searches `searchString` using `regex` and returns the resulting `Regex.MatchResult`.
@@ -208,7 +208,7 @@ public func =~ (searchString: String, regex:Regex) -> Regex.MatchResult {
 /**
     An object representing the result of searching a given `String` using a `Regex`.
  */
-public struct RegexMatchResult: SequenceType, BooleanType
+public struct RegexMatchResult: Sequence
 {
     /** Returns `true` if the number of matches is greater than zero. */
     public var boolValue: Bool { return items.count > 0 }
@@ -236,7 +236,7 @@ public struct RegexMatchResult: SequenceType, BooleanType
 
         captures = items.flatMap { result in
             (0 ..< result.numberOfRanges).map { i in
-                let nsrange = result.rangeAtIndex(i)
+                let nsrange = result.rangeAt(i)
                 return s.substringWithRange(nsrange)
             }
         }
@@ -262,18 +262,18 @@ public struct RegexMatchResult: SequenceType, BooleanType
     /**
         Returns a `Generator` that iterates over the captured matches as `NSTextCheckingResult`s.
      */
-    public func generate() -> AnyGenerator<NSTextCheckingResult> {
-        var gen = items.generate()
-        return anyGenerator { gen.next() }
+    public func makeIterator() -> AnyIterator<NSTextCheckingResult> {
+        var gen = items.makeIterator()
+        return AnyIterator { gen.next() }
     }
 
 
     /**
         Returns a `Generator` that iterates over the captured matches as `String`s.
      */
-    public func generateCaptures() -> AnyGenerator<String> {
-        var gen = captures.generate()
-        return anyGenerator { gen.next() }
+    public func generateCaptures() -> AnyIterator<String> {
+        var gen = captures.makeIterator()
+        return AnyIterator { gen.next() }
     }
 }
 
@@ -281,11 +281,11 @@ public struct RegexMatchResult: SequenceType, BooleanType
 /**
     Returns the `String` created by replacing the regular expression matches in `regexResult` using `replacementTemplate`.
  */
-public func map (regexResult:Regex.MatchResult, replacementTemplate:String) -> String
+public func map (_ regexResult:Regex.MatchResult, replacementTemplate:String) -> String
 {
     let searchString = NSMutableString(string: regexResult.searchString)
     let fullRange    = regexResult.searchString.fullNSRange
-    regexResult.regex.replaceMatchesInString(searchString, options: NSMatchingOptions(rawValue: 0), range:fullRange, withTemplate:replacementTemplate)
+    regexResult.regex.replaceMatches(in: searchString, options: NSRegularExpression.MatchingOptions(rawValue: 0), range:fullRange, withTemplate:replacementTemplate)
     return String(searchString)
 }
 
